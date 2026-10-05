@@ -25,8 +25,12 @@ public class Main {
 
         System.out.println("Ты готов начать игру? (Напиши: ДА или НЕТ)");
         String playerans = sc.nextLine();
-        if (playerans.equals("ДА")) {
+        switch (playerans) {
+            case "ДА":
             System.out.println("Игра началась!");
+                System.out.println("Выбери сложность игры (от 1 до 5):");
+                int difficultGame = sc.nextInt();
+                System.out.println("Выбранная сложность:\t" + difficultGame);
             System.out.println("Введите куда будет ходить персонаж (ход возможен только по вертикали и горизонтали на одну клетку)");
             System.out.println("Координаты персонажа - (x: " + ox + ", y: " + oy + ")");
 
@@ -35,21 +39,24 @@ public class Main {
 
             if (x != ox && y != oy) {
                 System.out.println("Некорректный ход");
-            } else if (Math.abs(x - ox) == 1) {
+            } else if (Math.abs(x - ox) == 1 || Math.abs(y - oy) == 1) {
                 ox = x;
-                playerplace += 1;
-            } else if (Math.abs(y - oy) == 1) {
                 oy = y;
                 playerplace += 1;
+                System.out.println("Ход корректный; Новые координаты: " +
+                        ox + ", " + oy + "\nХод номер: " + playerplace);
             } else {
                 System.out.println("Координаты не изменены");
             }
-
-        } else {
+            break;
+            case("НЕТ"):
             System.out.println("Печально, ну бб :(");
+                break;
+            default:
+                System.out.println("Данные введены некорректно");
+        }
         }
 
 
-
+        //lll
     }
-}

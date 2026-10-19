@@ -1,0 +1,54 @@
+import java.util.Random;
+
+public class Person {
+    private int x;
+    private int y;
+    private String image = "\uD83E\uDDD9";
+    private int live = 3;
+
+    Person(int sizeBoard) {
+        Random random = new Random();
+        x = 1 + random.nextInt(sizeBoard);
+        y = sizeBoard;
+    }
+
+    Person(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    Person() {
+        this(1, 1);
+    }
+
+    public void move(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public boolean isMoveCorrect(int x, int y) {
+        return this.x == x && Math.abs(this.y - y) == 1 || this.y == y && Math.abs(this.x - x) == 1;
+    }
+
+    public void downLive() {
+        if (live > 0) {
+            live--;
+        }
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getLive() {
+        return live;
+    }
+
+    public String getImage() {
+        return image;
+    }
+}

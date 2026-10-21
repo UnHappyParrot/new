@@ -4,16 +4,30 @@ import java.util.Scanner;
 public class PuzzleMonster extends Monster {
 
     private int secret;
+    private int maxNumber;
 
     PuzzleMonster(int sizeBoard) {
         super(sizeBoard);
         Random random = new Random();
-        secret = 1 + random.nextInt(100);
+        maxNumber = 0;
+        secret = 0;
     }
 
     @Override
     public boolean taskMonster(int difficultGame) {
-        System.out.println("Мини-игра: угадай число от 1 до 100. У тебя 3 попытки!");
+        Random random = new Random();
+
+        if (difficultGame == 1 || difficultGame == 2) {
+            maxNumber = 3;
+        } else if (difficultGame == 3 || difficultGame == 4) {
+            maxNumber = 5;
+        } else {
+            maxNumber = 7;
+        }
+
+        secret = 1 + random.nextInt(maxNumber);
+
+        System.out.println("Угадай число от 1 до " + maxNumber + ". У тебя 3 попытки!");
         Scanner scanner = new Scanner(System.in);
         int attempts = 3;
         while (attempts > 0) {

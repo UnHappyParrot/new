@@ -71,7 +71,10 @@ public class Main {
                 System.out.println("Координаты персонажа - (x: " + person.getX() + ", y: " + person.getY() + ")");
                 int x = sc.nextInt();
                 int y = sc.nextInt();
-                if (person.isMoveCorrect(x, y)) {
+                if (x < 1 || x > sizeofplace || y < 1 || y > sizeofplace) {
+                    System.out.println("Некорректный ход");
+                    person.downLive();
+                } else if (person.isMoveCorrect(x, y)) {
                     String next = board[y - 1][x - 1];
                     if (next.equals("  ")) {
                         board[person.getY() - 1][person.getX() - 1] = "  ";

@@ -2,6 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class BigMonster extends Monster {
+
     BigMonster(int sizeBoard) {
         super(sizeBoard);
     }
@@ -12,20 +13,14 @@ public class BigMonster extends Monster {
             return taskMonster();
         } else {
             System.out.println("Решите задачу:");
-
             Random random = new Random();
-
             int x = random.nextInt(10 * (difficultGame - 1), 10 * difficultGame);
             int y = random.nextInt(10 * (difficultGame - 1), 10 * difficultGame);
             int z = random.nextInt(100 * (difficultGame - 1), 100 * difficultGame);
-
             int trueAnswer = x * y - z;
-
             System.out.println("Реши пример: " + x + " * " + y + " - " + z + " = ?");
-
             Scanner scanner = new Scanner(System.in);
             int answer = scanner.nextInt();
-
             if (trueAnswer == answer) {
                 System.out.println("Верно! Ты победил монстра");
                 return true;

@@ -25,22 +25,22 @@ public class Monster {
     }
 
     public boolean conflictPerson(int x, int y) {
-        return this.x == x && this.y == y;
+        if (this.x == x && this.y == y) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean taskMonster(int difficultGame) {
         System.out.println("Решите задачу:");
-
         Random random = new Random();
-
         int a = random.nextInt(10 * difficultGame);
         int b = random.nextInt(10 * difficultGame);
         int trueAnswer = a + b;
-
         System.out.println("Реши пример: " + a + " + " + b + " = ?");
         Scanner scanner = new Scanner(System.in);
         int answer = scanner.nextInt();
-
         if (trueAnswer == answer) {
             System.out.println("Верно! Ты победил монстра");
             return true;
